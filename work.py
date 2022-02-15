@@ -12,3 +12,7 @@ print("==================================")
 print("          W E L C O M E          ")
 print("    This is my first program     ")
 print("==================================")
+
+name = input("Name:")
+print("Welcome", name)
+
