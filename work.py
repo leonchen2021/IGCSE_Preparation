@@ -13,8 +13,10 @@ print("          W E L C O M E          ")
 print("    This is my first program     ")
 print("==================================")
 
-name = input("Name:")
-print("Welcome", name)
+#%%
+Age = 337
 
+CodeName = "Kids Next Door"
 
-
+print(Age)
+print(CodeName)
