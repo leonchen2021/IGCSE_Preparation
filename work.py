@@ -5,6 +5,9 @@
 # process
 # output = results
 # "" = ''
+from pydoc import doc
+
+
 print("What a wonderful world")
 print(123.456)
 # predefinal functions =  Python already knows
@@ -20,3 +23,5 @@ CodeName = "Kids Next Door"
 
 print(Age)
 print(CodeName)
+
+#%%
