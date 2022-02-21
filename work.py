@@ -23,5 +23,3 @@ CodeName = "Kids Next Door"
 
 print(Age)
 print(CodeName)
-
-#%%
