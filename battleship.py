@@ -35,5 +35,4 @@ def ask_player():
     print()
     print(zero2)
 
-
 ask_player()
