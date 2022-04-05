@@ -21,8 +21,6 @@ print(zero2)
 
 #%%
 
-#%%
-
 def ask_player():
     print(zero2)
     print()
@@ -52,4 +50,3 @@ def make_board():
 
 b = make_board()
 print_board(b)
-# %%
