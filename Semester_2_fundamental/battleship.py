@@ -8,7 +8,7 @@ def make_board():
     board=np.array([["O"]* 10]* 10)
     for i in range(10):
         board[10-i-1,0]=i
-        board[9, 1:10] = np.array(list("ABCDEFGHI"))
+        board[9,1:10] = np.array(list("ABCDEFGHI"))
     board[9, 0] = " "
     return board
 
