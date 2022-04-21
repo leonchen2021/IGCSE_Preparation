@@ -1,3 +1,3 @@
 SELECT student_name, student_email
-FROM school
+FROM table
 WHERE gender = "Male"
