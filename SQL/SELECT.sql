@@ -22,3 +22,9 @@ INSERT INTO students VALUES (4, 'Charlie', 'charlie@gmail.com', "Male");
 SELECT student_name, student_email
 FROM school
 WHERE gender = "Male"
+
+--DELETE clause
+DELETE FROM students
+WHERE name = "Mr. Amini"
+
+--UPDATE clause
