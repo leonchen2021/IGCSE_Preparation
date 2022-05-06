@@ -94,4 +94,3 @@ def shoot_ship(target,board,pos_set):
     elif board[target[0],target[1]]!="O":
         success = False
     return board, success
-# %%
