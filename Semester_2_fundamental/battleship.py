@@ -71,3 +71,27 @@ def place_all_ships():
             all_positions.append(point)
 
     return all_ships, all_positions
+
+
+def demonstrate_board():
+    board = make_board()
+
+    a,b = place_all_ships()
+
+    for i in a:
+        for j in i:
+            board[j[0],j[1]]=F"{len(i)}"
+
+    print_board(board)
+
+def shoot_ship(target,board,pos_set):
+    if (target in pos_set) and (board[target[0],target[1]]=="O"):
+        board[target[0],target[1]] = "S"
+        success = True
+    elif (target not in pos_set) and (board[target[0],target[1]]=="O"):
+        board[target[0],target[1]] = "X"
+        success = True
+    elif board[target[0],target[1]]!="O":
+        success = False
+    return board, success
+# %%
