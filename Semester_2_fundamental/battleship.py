@@ -86,7 +86,7 @@ def demonstrate_board():
 
 def shoot_ship(target,board,pos_set):
     if (target in pos_set) and (board[target[0],target[1]]=="O"):
-        board[target[0],target[1]] = "S"
+        board[target[0],target[1]] = "S"    
         success = True
     elif (target not in pos_set) and (board[target[0],target[1]]=="O"):
         board[target[0],target[1]] = "X"
@@ -94,3 +94,31 @@ def shoot_ship(target,board,pos_set):
     elif board[target[0],target[1]]!="O":
         success = False
     return board, success
+
+def check_ship(target,ships):
+    for i in ships:
+        if target in i:
+            i.remove(target)
+    if [] in ships:
+        ships.remove([])
+        print("You've sunk a ship!")
+        print()
+    return ships
+
+def play_game(difficulty=2):
+    board = make_board()
+    print_board(board)
+    ships, pos = place_all_ships()
+
+    if difficulty == 1:
+        shots_available = 60
+    elif difficulty == 3:
+        shots_available = 25
+    else:
+        shots_available = 37
+
+    print("")
+    print(F"There are {len(ships)} ships in the ocean. Can you find them")
+    print(F"You have {shots_available} attempts.")
+
+
