@@ -37,8 +37,7 @@ def select_target(b):
     number_coor = np.where(b[0:9,0]==number_guess)[0][0]
 
     return[number_coor,letter_coor]
-
-
+    
 def place_ship(size):
     orientation = np.random.choice(["Horizontal","Vertical"])
     
