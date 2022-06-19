@@ -261,10 +261,13 @@ def play_game(difficulty=2):
         print("You've sunk all ship! Well Done!")
 
 #%%
-b = make_board()
-print_board(b)
-target = select_target(b)
-ship_set, pos_set = place_all_ships()
+#b = make_board()
+#print_board(b)
+#target = select_target(b)
+#ship_set, pos_set = place_all_ships()
 
-board, success = shoot_ship(target, b, pos_set)
-print_board(board)
+#board, success = shoot_ship(target, b, pos_set)
+#print_board(board)
+
+play_game()
+# %%
