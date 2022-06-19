@@ -1,11 +1,3 @@
-
-import numpy as np
-
-def print_board(b):
-    for row in b:
-        print(" ".join(row))
-
-from xml.sax.handler import all_properties
 import numpy as np
 
 def print_board(b):
@@ -23,13 +15,13 @@ def make_board():
 def select_target(b):
     letter_guess = ""
     while letter_guess not in b[9,1::]:
-        letter_guess =input("Please select horizontal position: ").upper()
+        letter_guess = input("Please select horizontal position: ").upper()
         if letter_guess not in b[9,1::]:
             print("Sorry that selection is not valid. Please try again. ")
             
     number_guess = ""
     while number_guess not in b[0:9,0]:
-        number_guess =input("Please select vertical position: ")
+        number_guess = input("Please select vertical position: ")
         if number_guess not in b[0:9,0]:
             print("Sorry, that selection is not valid. Please try again.")
         
@@ -37,113 +29,6 @@ def select_target(b):
     number_coor = np.where(b[0:9,0]==number_guess)[0][0]
 
     return[number_coor,letter_coor]
-    
-def place_ship(size):
-    orientation = np.random.choice(["Horizontal","Vertical"])
-    
-    if orientation == "Horizontal":
-        vert_pos = np.random.choice(range(9))
-        hori_pos = np.random.choice(range(1,11-size))
-        ship_coor = [[vert_pos, i]for i in range(hori_pos,hori_pos+size)]
-        
-    if orientation =="Vertical":
-        vert_pos = np.random.choice(range(1,10-size))
-        hori_pos = np.random.choice(range(1,10))
-        ship_coor = [[i,hori_pos] for i in range(vert_pos,vert_pos+size)]
-    return ship_coor
-
-def place_all_ships():
-    all_ships = [place_ship(5)]
-    all_positions = all_ships[0].copy()
-    for size in [4,3,3,2]:
-        repeat = True  
-        while repeat == True:
-            val = 0
-            new_ship = place_ship(size)
-            for i in new_ship:
-                if i not in all_positions:
-                    val+=1
-                if val == size:
-                    repeat = False
-        all_ships.append(new_ship)
-        for point in new_ship:
-            all_positions.append(point)
-    return all_ships, all_positions
-
-ships, positions = place_all_ships()
-print(ships)
-
-
-def demonstrate_board():
-    board = make_board()
-    
-    a,b = place_all_ships()
-    
-    for i in a:
-        for j in i:
-            board[j[0],j[1]]=F"{len(i)}"
-                     
-    print_board(board)
-
-def shoot_ship(target, board,pos_set):
-    if (target in pos_set) and (board[target[0], target[1]]=="0"):
-        board[target[0], target[1]] = "S"
-        success = True
-    elif (target not in pos_set) and (board[target[0], target[1]=="0"]):
-        board[target[0], target[1]] = "X"
-        success = True
-    elif board[target[0],target[1]]=="O":
-        success = False
-    return board, success
-
-def check_ship(target,ships):
-    for i in ships:
-        i.remove(target)
-    if [] in ships:
-        ships.remove([])
-        print("You'vr sunck a ship!")
-        print()
-    return ships 
-
-from xml.sax.handler import all_properties
-import numpy as np
-
-def print_board(b):
-    for row in b:
-        print(" ".join(row))
-from xml.sax.handler import all_properties
-import numpy as np
-
-def print_board(b):
-    for row in b:
-        print(" ".join(row))
-        
-def make_board():
-    board=np.array([["0"] * 10]*10)
-    for i in range(10):
-        board[10-i-1,0]=i
-        board[9,1:10] = np.array(list("ABCDEFGHI"))
-    board[9,0] = " "
-    return board
-
-def select_target(b):
-    letter_guess = ""
-    while letter_guess not in b[9,1::]:
-        letter_guess =input("Please select horizontal position: ").upper()
-        if letter_guess not in b[9,1::]:
-            print("Sorry that selection is not valid. Please try again. ")
-            
-    number_guess = ""
-    while number_guess not in b[0:9,0]:
-        number_guess =input("Please select vertical position: ")
-        if number_guess not in b[0:9,0]:
-            print("Sorry, that selection is not valid. Please try again.")
-        
-    letter_coor = np.where(b[9]==letter_guess)[0][0]
-    number_coor = np.where(b[0:9,0]==number_guess)[0][0]
-
-    return[number_coor,letter_coor]
-
 
 def place_ship(size):
     orientation = np.random.choice(["Horizontal","Vertical"])
@@ -177,8 +62,8 @@ def place_all_ships():
             all_positions.append(point)
     return all_ships, all_positions
 
-ships, positions = place_all_ships()
-print(ships)
+#ships, positions = place_all_ships()
+#print(ships)
 
 
 def demonstrate_board():
@@ -193,24 +78,29 @@ def demonstrate_board():
     print_board(board)
 
 def shoot_ship(target, board,pos_set):
-    if (target in pos_set) and (board[target[0], target[1]]=="0"):
+    if (target in pos_set) and (board[target[0],target[1]]=="0"):
         board[target[0], target[1]] = "S"
         success = True
-    elif (target not in pos_set) and (board[target[0], target[1]=="0"]):
+#    elif (target not in pos_set) and (board[target[0], target[1]=="0"]): # You had a bracket in the wrong place.
+    elif (target not in pos_set) and (board[target[0], target[1]]=="0"):
         board[target[0], target[1]] = "X"
         success = True
-    elif board[target[0],target[1]]=="O":
+#    elif board[target[0],target[1]]=="0":# You had O, but everywhere else is 0.
+    elif board[target[0],target[1]]!="0":# It should be !="0". This means "not equal."
         success = False
     return board, success
 
 def check_ship(target,ships):
+#    for i in ships:
+#        i.remove(target) # You can only remove target if it is in i.
     for i in ships:
-        i.remove(target)
+        if target in i:## This is the line you missed
+            i.remove(target)
     if [] in ships:
         ships.remove([])
-        print("You'vr sunck a ship!")
+        print("You've sunk a ship!")
         print()
-    return ships 
+    return ships
 
 def play_game(difficulty=2):
     board = make_board()
@@ -227,11 +117,19 @@ def play_game(difficulty=2):
     print("")
     print(F"There are {len(ships)} ships in the ocean. Can you find them?")
     print(F"You have {shots_available} attempts. ")
-    
-    while (shots_available > 0) and (len(ships) > 0):
-        target, success = shoot_ship(target,board,pos)
+
+#    # I'm adding my revisions and showing what's wrong.
+#    while (shots_available > 0) and (len(ships) > 0):
+#        target, success = shoot_ship(target,board,pos)
+#        if success:
+#            shots_available -= 1
+            
+    while (shots_available > 0) and (len(ships)>0):
+        target = select_target(board) # You need to say what target is before running shoot_ship
+        
+        board, success = shoot_ship(target,board,pos) # We get a new board from shoot_ship. Not a target.
         if success:
-            shots_available -= 1 
+            shots_available -= 1
             
             if board[target[0],target[1]]=="S":
                 print()
@@ -261,13 +159,18 @@ def play_game(difficulty=2):
         print("You've sunk all ship! Well Done!")
 
 #%%
+
+### All of this is just to test the code.
+### It should not be in the code when you are running it.
+
 #b = make_board()
 #print_board(b)
 #target = select_target(b)
 #ship_set, pos_set = place_all_ships()
 
-#board, success = shoot_ship(target, b, pos_set)
+#b, success = shoot_ship(target, b, pos_set)
 #print_board(board)
 
+#%%
+
 play_game()
-# %%
