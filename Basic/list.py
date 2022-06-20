@@ -7,7 +7,7 @@ print(Studentlist)
 
 Rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
 
-for i in range(0,7):
+for i in range(0,7,2):
     print(i, Rainbow[i])
 
 #%%
@@ -21,6 +21,7 @@ for i in range(0,HowMany):
     Rainbow.append(NewValue)
 
 #%%
+#select function
 my_list = [10,11,12,13,14]
 i = [1,4]
 element = []

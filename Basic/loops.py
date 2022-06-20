@@ -20,3 +20,6 @@ while number !=0:
         number = int(number)
     total = total + number
 print("total:", total)
+
+for i in range(6):
+    print("How many studnets")
