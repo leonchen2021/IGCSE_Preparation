@@ -14,6 +14,7 @@ for score in test_scores:
 length = len(test_scores)
 print("length of the array(number of scores): ", length)
 
+#array select
 i = [1,2]
 element = []
 for index in i:

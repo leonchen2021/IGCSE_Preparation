@@ -11,14 +11,14 @@ if Number < 15:
     print("sorry come back when you are older")
 
 else:
-    print("you can but a ticket at your own risk")
+    print("you can buy a ticket at your own risk")
 
 #%%
 
-Exam1 = input("enter student mark for Exam 1")
+Exam1 = input("enter student mark for Exam1: ")
 Exam1 = int(Exam1)
 if Exam1 >= 50:
-    Exam2 = input("enter student mark for Exam2")
+    Exam2 = input("enter student mark for Exam2: ")
     Exam2 = int(Exam2)
     if Exam2 >= 50:
         print("Student has passed the course")

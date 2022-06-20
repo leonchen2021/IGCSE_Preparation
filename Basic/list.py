@@ -7,7 +7,7 @@ print(Studentlist)
 
 Rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
 
-for i in range(0,7,2):
+for i in range(0,7):
     print(i, Rainbow[i])
 
 #%%
